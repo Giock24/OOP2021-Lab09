@@ -78,7 +78,7 @@ public final class ConcurrentGUI extends JFrame {
          * 
          */
         private volatile boolean stop;
-        private volatile int counter;
+        private int counter;
 
         @Override
         public void run() {
@@ -102,7 +102,8 @@ public final class ConcurrentGUI extends JFrame {
                      *
                      * EXERCISE: Can you think of a solution that doesn't require counter to be volatile?
                      */
-                    this.counter++;
+                    //this.counter++;
+                    this.increment();
                     Thread.sleep(100);
                 } catch (InvocationTargetException | InterruptedException ex) {
                     /*
@@ -119,6 +120,10 @@ public final class ConcurrentGUI extends JFrame {
          */
         public void stopCounting() {
             this.stop = true;
+        }
+        
+        public synchronized void increment() {
+            this.counter++;
         }
     }
 }
