@@ -21,7 +21,7 @@ public class MyFirstClassConcurrent extends Thread {
             this.millisecond = new java.util.Date().getTime();
             System.out.println("millesecond : " + this.millisecond);
             try {
-                sleep(10);
+                sleep(1000);
             } catch (Exception e) {
                 
             }

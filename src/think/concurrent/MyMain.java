@@ -8,7 +8,7 @@ public class MyMain extends Thread {
         clock.start();
         
         try {
-            sleep(5);
+            sleep(5000);
             System.out.println("Se Funziona ci sono due Thread stampati ;)");
         } catch (Exception e) {
             
