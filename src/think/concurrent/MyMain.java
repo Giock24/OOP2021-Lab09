@@ -1,6 +1,6 @@
 package think.concurrent;
 
-public class MyMain extends Thread{
+public class MyMain extends Thread {
 
     public static void main(final String... s) {
         
