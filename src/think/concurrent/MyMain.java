@@ -4,8 +4,11 @@ public class MyMain extends Thread {
 
     public static void main(final String... s) {
         
-        final MyFirstClassConcurrent clock = new MyFirstClassConcurrent();
-        clock.start();
+        //final MyFirstClassConcurrent clock = new MyFirstClassConcurrent();
+        //clock.start();
+        
+        final ClockRunnable clock2 = new ClockRunnable();
+        new Thread(clock2).start();
         
         try {
             sleep(5000);
