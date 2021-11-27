@@ -12,8 +12,13 @@ public class MyMain extends Thread {
         //final ClockRunnable clock2 = new ClockRunnable();
         //new Thread(clock2).start();
         
-        final MyMain program1 = new MyMain();
-        program1.programAutoClosable();
+        //final MyMain program1 = new MyMain();
+        //program1.programAutoClosable();
+        
+        final MySimpleSynchronizer sync = new MySimpleSynchronizer();
+        
+        new Agent1(sync).start();
+        new Agent2(sync).start();
         
         try {
             sleep(5000);
