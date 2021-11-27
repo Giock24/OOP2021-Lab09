@@ -16,7 +16,7 @@ public class MySimpleSynchronizer {
     
     public synchronized void signaArrived() {
         this.signalArrived = true;
-        this.notifyAll(); // ???
+        this.notifyAll(); // meglio usare notifiAll al posto della notify normale
     }
 
 }
