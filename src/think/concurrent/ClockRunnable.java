@@ -1,7 +1,5 @@
 package think.concurrent;
 
-import java.util.concurrent.*;
-
 /**
  * 
  *  My Second Version of Clock
@@ -22,8 +20,8 @@ public class ClockRunnable implements Runnable {
             System.out.println("millesecond : " + this.millisecond);
             try {
                 Thread.sleep(1000);
-            } catch (Exception e) {
-                
+            } catch (IllegalArgumentException | InterruptedException e) {
+                e.printStackTrace();
             }
         }
     }
