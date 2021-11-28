@@ -3,18 +3,25 @@ package think.concurrent;
 public class Pong extends Thread {
 
     private final MySimpleSynchronizer sync, otherSynch;
+    private final DisplayNumber display;
     
-    public Pong(final MySimpleSynchronizer sync, final MySimpleSynchronizer otherSynch) {
+    public Pong(final MySimpleSynchronizer sync, final MySimpleSynchronizer otherSynch
+            , final DisplayNumber display) {
         this.sync = sync;
         this.otherSynch = otherSynch;
+        this.display = display;
     }
     
     public void run() {
+        final int nThread = 2;
         while (true) {
             try {
-                sync.waitForSignal();
+                while (nThread == display.getCurrentThread()) {
+                    sync.waitForSignal();
+                }
                 log("Pong!");
                 otherSynch.signalArrived();
+                display.inc();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

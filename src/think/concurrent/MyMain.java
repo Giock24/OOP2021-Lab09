@@ -20,17 +20,19 @@ public class MyMain extends Thread {
         //new Agent1(sync).start();
         //new Agent2(sync).start();
         
-      final MySimpleSynchronizer sync = new MySimpleSynchronizer();
-      final MySimpleSynchronizer sync2 = new MySimpleSynchronizer();
+        final DisplayNumber dn = new DisplayNumber(2);
+        
+        final MySimpleSynchronizer sync = new MySimpleSynchronizer();
+        final MySimpleSynchronizer sync2 = new MySimpleSynchronizer();
       
-      new Ping(sync, sync2).start();
-      new Pong(sync2, sync).start();
+        new Ping(sync, sync2, dn).start();
+        new Pong(sync2, sync, dn).start();
       
-      sync.signalArrived();
+        sync.signalArrived();
         
         try {
             sleep(5000);
-            System.out.println("Se Funziona ci sono due Thread stampati ;)");
+            //System.out.println("Se Funziona ci sono due Thread stampati ;)");
         } catch (IllegalArgumentException | InterruptedException e) {
             e.printStackTrace();
         }

@@ -3,19 +3,26 @@ package think.concurrent;
 public class Ping extends Thread {
     
     private final MySimpleSynchronizer sync, otherSynch;
+    private final DisplayNumber display;
     
-    public Ping(final MySimpleSynchronizer sync, final MySimpleSynchronizer otherSynch) {
+    public Ping(final MySimpleSynchronizer sync, final MySimpleSynchronizer otherSynch
+            , final DisplayNumber display) {
         this.sync = sync;
         this.otherSynch = otherSynch;
+        this.display = display;
     }
     
     public void run() {
+        final int nThread = 1;
         while (true) {
             try {
-                sync.waitForSignal();
+                while (nThread == display.getCurrentThread()) {
+                    sync.waitForSignal();
+                }
                 log("Ping!");
                 otherSynch.signalArrived();
-                delay(1000);
+                display.inc();
+                delay(5000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
