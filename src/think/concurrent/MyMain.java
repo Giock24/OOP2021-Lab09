@@ -15,10 +15,18 @@ public class MyMain extends Thread {
         //final MyMain program1 = new MyMain();
         //program1.programAutoClosable();
         
-        final MySimpleSynchronizer sync = new MySimpleSynchronizer();
+        //final MySimpleSynchronizer sync = new MySimpleSynchronizer();
         
-        new Agent1(sync).start();
-        new Agent2(sync).start();
+        //new Agent1(sync).start();
+        //new Agent2(sync).start();
+        
+      final MySimpleSynchronizer sync = new MySimpleSynchronizer();
+      final MySimpleSynchronizer sync2 = new MySimpleSynchronizer();
+      
+      new Ping(sync, sync2).start();
+      new Pong(sync2, sync).start();
+      
+      sync.signalArrived();
         
         try {
             sleep(5000);

@@ -5,18 +5,18 @@ public class MySimpleSynchronizer {
     private boolean signalArrived;
     
     public MySimpleSynchronizer() {
-        this.signalArrived = false;
+        signalArrived = false;
     }
     
     public synchronized void waitForSignal() throws InterruptedException {
-        while (!this.signalArrived) {
-            this.wait();
+        while (!signalArrived) {
+            wait();
         }
     }
     
-    public synchronized void signaArrived() {
-        this.signalArrived = true;
-        this.notifyAll(); // meglio usare notifiAll al posto della notify normale
+    public synchronized void signalArrived() {
+        signalArrived = true;
+        notifyAll(); // meglio usare notifiAll al posto della notify normale
     }
 
 }

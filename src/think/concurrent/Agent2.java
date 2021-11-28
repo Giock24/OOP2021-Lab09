@@ -1,8 +1,8 @@
 package think.concurrent;
 
-public class Agent2 extends Thread{
+public class Agent2 extends Thread {
     
-private final MySimpleSynchronizer sync;
+    private final MySimpleSynchronizer sync;
     
     public Agent2(final MySimpleSynchronizer sync) {
         this.sync = sync;

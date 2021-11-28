@@ -1,6 +1,6 @@
 package think.concurrent;
 
-public class Agent1 extends Thread{
+public class Agent1 extends Thread {
     
     private final MySimpleSynchronizer sync;
     
@@ -10,7 +10,7 @@ public class Agent1 extends Thread{
     
     public void run() {
         this.a1();
-        this.sync.signaArrived();
+        this.sync.signalArrived();
         this.a2();
         this.a3();
     }
